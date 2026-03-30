@@ -11,7 +11,7 @@ Winnipeg is located at the geographic center of North America, where the Red Riv
 
 ## 🖼 Landmark Image (Required Visual Element)
 
-![Winnipeg Skyline](images/winnipeg.jpg)
+![Winnipeg Skyline](winnipeg.jpg)
 
 *Winnipeg Skyline — one of Winnipeg’s most iconic gathering places.*
 
