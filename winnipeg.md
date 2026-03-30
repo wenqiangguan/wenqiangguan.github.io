@@ -11,9 +11,9 @@ Winnipeg is located at the geographic center of North America, where the Red Riv
 
 ## 🖼 Landmark Image (Required Visual Element)
 
-![The Forks in Winnipeg](https://upload.wikimedia.org/wikipedia/commons/0/0c/The_Forks_Winnipeg.jpg)
+![Winnipeg Skyline](images/winnipeg.jpg)
 
-*The Forks — one of Winnipeg’s most iconic gathering places.*
+*Winnipeg Skyline — one of Winnipeg’s most iconic gathering places.*
 
 ---
 
