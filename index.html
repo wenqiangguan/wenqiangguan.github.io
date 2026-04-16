@@ -1,98 +1,1008 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>School IT Infrastructure - Capstone Project</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background: #005bbb;
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
-        section {
-            width: 80%;
-            margin: 30px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-        }
-        h2 {
-            color: #005bbb;
-        }
-        img {
-            width: 100%;
-            border-radius: 10px;
-            margin: 15px 0;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #ddd;
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>groupproj | Modern Project Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="groupproj - Modern project solutions for small and growing businesses." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: #6366f1;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card: #111827;
+      --border: #1f2937;
+      --radius: 14px;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.92), rgba(2,6,23,0.7), transparent);
+      border-bottom: 1px solid rgba(148,163,184,0.12);
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 14px 20px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg, #4f46e5, #22c55e, #06b6d4, #4f46e5);
+      padding: 2px;
+      box-shadow: 0 0 0 1px rgba(148,163,184,0.35);
+    }
+
+    .logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 0, #1f2937 0, #020617 55%, #000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #4f46e5, #22c55e);
+      transition: width 0.18s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(148,163,184,0.4);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: #e5e7eb;
+        background: radial-gradient(circle at top left, rgba(79,70,229,0.25), rgba(15,23,42,0.95));
+        box-shadow: 0 10px 30px rgba(15,23,42,0.8);
+      }
+
+      .nav-cta span.dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: #22c55e;
+        box-shadow: 0 0 0 4px rgba(34,197,94,0.25);
+      }
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr);
+      gap: 32px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+        align-items: center;
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: radial-gradient(circle at top left, rgba(79,70,229,0.3), rgba(15,23,42,0.95));
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e5e7eb;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow span.badge {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 40px);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(to right, #4f46e5, #22c55e, #06b6d4);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 22px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: rgba(15,23,42,0.9);
+    }
+
+    .hero-meta span::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle at center, #22c55e, #16a34a);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.2);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5, #22c55e);
+      color: #f9fafb;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+    }
+
+    .btn-primary span.icon {
+      font-size: 16px;
+    }
+
+    .btn-ghost {
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.5);
+      color: #e5e7eb;
+    }
+
+    .hero-footnote {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-footnote strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      min-height: 260px;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 22px;
+      background: radial-gradient(circle at top left, #111827, #020617 55%, #000 100%);
+      border: 1px solid rgba(148,163,184,0.35);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-card-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hero-card-header-left span.title {
+      font-size: 12px;
+      color: #e5e7eb;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .hero-card-header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.9);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .hero-card-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+
+    @media (max-width: 899px) {
+      .hero-card-main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-card-copy-title {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .hero-card-copy-title span {
+      background: linear-gradient(to right, #4f46e5, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-card-copy-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .hero-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: rgba(15,23,42,0.9);
+      font-size: 11px;
+      color: #e5e7eb;
+    }
+
+    .hero-card-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .metric {
+      padding: 8px 9px;
+      border-radius: 12px;
+      border: 1px solid rgba(31,41,55,0.9);
+      background: radial-gradient(circle at top, rgba(15,23,42,0.95), #020617);
+    }
+
+    .metric-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 13px;
+      color: #e5e7eb;
+    }
+
+    .hero-card-graph {
+      position: relative;
+      border-radius: 16px;
+      border: 1px solid rgba(31,41,55,0.9);
+      background: radial-gradient(circle at top, rgba(15,23,42,0.95), #020617);
+      padding: 10px 10px 12px;
+      overflow: hidden;
+    }
+
+    .hero-card-graph-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-card-graph-header span.label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .hero-card-graph-header span.value {
+      color: #22c55e;
+      font-weight: 500;
+    }
+
+    .graph-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 80px;
+    }
+
+    .graph-bar {
+      flex: 1;
+      border-radius: 999px;
+      background: linear-gradient(to top, rgba(55,65,81,0.9), rgba(31,41,55,0.9));
+      overflow: hidden;
+      position: relative;
+    }
+
+    .graph-bar-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: inherit;
+      background: linear-gradient(to top, #4f46e5, #22c55e);
+    }
+
+    .hero-card-graph-footer {
+      margin-top: 6px;
+      font-size: 9px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .hero-floating {
+      position: absolute;
+      right: -4px;
+      bottom: -4px;
+      width: 150px;
+      height: 150px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, rgba(79,70,229,0.4), transparent 60%);
+      filter: blur(10px);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* Sections */
+    .section-title {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      max-width: 520px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 800px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      border-radius: var(--radius);
+      background: radial-gradient(circle at top, #020617, #020617 55%, #000 100%);
+      border: 1px solid var(--border);
+      padding: 16px 16px 14px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.65);
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .card small {
+      font-size: 11px;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .pill-row span {
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: rgba(15,23,42,0.9);
+      font-size: 11px;
+      color: #e5e7eb;
+    }
+
+    /* Contact */
+    .contact-layout {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 800px) {
+      .contact-layout {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      }
+    }
+
+    .contact-info p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .contact-list li {
+      margin-bottom: 6px;
+    }
+
+    .contact-list span.label {
+      color: #e5e7eb;
+      font-weight: 500;
+      margin-right: 4px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .field label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 10px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: rgba(15,23,42,0.95);
+      padding: 8px 10px;
+      color: #e5e7eb;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 1px rgba(79,70,229,0.6);
+    }
+
+    .field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31,41,55,0.9);
+      padding: 14px 20px 18px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    footer .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    footer a {
+      color: #9ca3af;
+    }
+
+    footer a:hover {
+      color: #e5e7eb;
+    }
+  </style>
 </head>
 <body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="logo">
+          <div class="logo-mark">
+            <div class="logo-inner">gp</div>
+          </div>
+          <div>
+            <div class="logo-text-main">groupproj</div>
+            <div class="logo-text-sub">project solutions studio</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          <span class="dot"></span>
+          Let’s talk
+        </button>
+      </div>
+    </header>
 
-<header>
-    <h1>School IT Infrastructure</h1>
-    <p>NSA630 Capstone Project – Example Scenario A</p>
-</header>
+    <main>
+      <!-- Hero -->
+      <section class="section hero" id="top">
+        <div>
+          <div class="eyebrow">
+            groupproj
+            <span class="badge">small teams · real impact</span>
+          </div>
+          <h1 class="hero-title">
+            Modern project delivery for
+            <span class="highlight">teams that actually ship.</span>
+          </h1>
+          <p class="hero-subtitle">
+            groupproj partners with small and growing companies to design, build, and maintain
+            lean digital projects—without the overhead of a full in‑house team.
+          </p>
 
-<section>
-    <h2>Project Overview</h2>
-    <p>
-        A new school is being built and requires a complete IT infrastructure to support learning and operations.
-        Our team designed and implemented a fully functional demo environment that includes networking, servers,
-        directory services, internal communication, and security.
-    </p>
-    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350" alt="School Image">
-</section>
+          <div class="hero-meta">
+            <span>End‑to‑end delivery</span>
+            <span>Clear communication</span>
+            <span>Practical technology choices</span>
+          </div>
 
-<section>
-    <h2>Network Requirements</h2>
-    <p>The school requires at least four networks and user groups:</p>
-    <ul>
-        <li>Students / Guest Access</li>
-        <li>Instructors</li>
-        <li>Staff</li>
-        <li>IT Department</li>
-    </ul>
-    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31" alt="Networking">
-</section>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              <span class="icon">➜</span>
+              Start a project
+            </button>
+            <button class="btn-ghost" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+              View sample work
+            </button>
+          </div>
 
-<section>
-    <h2>Implemented Services</h2>
-    <ul>
-        <li>Active Directory Domain Services</li>
-        <li>DNS & DHCP</li>
-        <li>Internal Email System</li>
-        <li>Web Server</li>
-        <li>Network Segmentation & Security</li>
-        <li>Redundancy for critical services</li>
-    </ul>
-    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Servers">
-</section>
+          <p class="hero-footnote">
+            <strong>Built for small companies:</strong> simple process, predictable timelines, and solutions you can maintain.
+          </p>
+        </div>
 
-<section>
-    <h2>Redundancy & Availability</h2>
-    <p>
-        The environment includes redundant domain controllers, DNS servers, and network paths to ensure continuous
-        operation even in case of hardware or service failure.
-    </p>
-    <img src="https://images.unsplash.com/photo-1581091012184-5c7b6c2a5d0b" alt="Redundancy">
-</section>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div class="hero-card-header-left">
+                <span class="title">groupproj dashboard</span>
+                <span>Snapshot of a typical client engagement</span>
+              </div>
+              <div class="hero-card-header-right">
+                <span class="pill">live</span>
+                <span class="pill">client view</span>
+              </div>
+            </div>
 
-<footer>
-    <p>© 2025 School IT Infrastructure – Capstone Project</p>
-</footer>
+            <div class="hero-card-main">
+              <div>
+                <div class="hero-card-copy-title">
+                  Project health:
+                  <span>On track</span>
+                </div>
+                <p class="hero-card-copy-sub">
+                  Weekly check‑ins, transparent scope, and a single source of truth for your team and stakeholders.
+                </p>
+                <div class="hero-card-tags">
+                  <span class="tag">Roadmap</span>
+                  <span class="tag">Delivery</span>
+                  <span class="tag">Support</span>
+                </div>
+                <div class="hero-card-metrics">
+                  <div class="metric">
+                    <div class="metric-label">Timeline confidence</div>
+                    <div class="metric-value">92%</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Scope clarity</div>
+                    <div class="metric-value">High</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Active tasks</div>
+                    <div class="metric-value">18 in progress</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Stakeholder updates</div>
+                    <div class="metric-value">Weekly</div>
+                  </div>
+                </div>
+              </div>
 
+              <div class="hero-card-graph">
+                <div class="hero-card-graph-header">
+                  <span class="label">delivery velocity</span>
+                  <span class="value">+34% vs baseline</span>
+                </div>
+                <div class="graph-bars">
+                  <div class="graph-bar">
+                    <div class="graph-bar-fill" style="height: 40%;"></div>
+                  </div>
+                  <div class="graph-bar">
+                    <div class="graph-bar-fill" style="height: 55%;"></div>
+                  </div>
+                  <div class="graph-bar">
+                    <div class="graph-bar-fill" style="height: 70%;"></div>
+                  </div>
+                  <div class="graph-bar">
+                    <div class="graph-bar-fill" style="height: 82%;"></div>
+                  </div>
+                  <div class="graph-bar">
+                    <div class="graph-bar-fill" style="height: 90%;"></div>
+                  </div>
+                </div>
+                <div class="hero-card-graph-footer">
+                  <span>Week 1–5</span>
+                  <span>Stable, predictable output</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-floating"></div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="section" id="about">
+        <h2 class="section-title">About groupproj</h2>
+        <p class="section-subtitle">
+          groupproj is a small, focused studio that helps companies move from idea to working product.
+          We care about clarity, maintainability, and building only what you actually need.
+        </p>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Lean by design</h3>
+            <p>
+              We keep teams small and communication direct, so decisions are fast and projects stay aligned with your goals.
+            </p>
+            <small>FOCUS</small>
+          </div>
+          <div class="card">
+            <h3>Technology that fits</h3>
+            <p>
+              We choose tools and stacks that match your team’s skills and long‑term plans—not just what is trendy.
+            </p>
+            <small>APPROACH</small>
+          </div>
+          <div class="card">
+            <h3>Transparent process</h3>
+            <p>
+              Clear milestones, visible progress, and honest trade‑offs so you always know where the project stands.
+            </p>
+            <small>PROCESS</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="section" id="services">
+        <h2 class="section-title">Services</h2>
+        <p class="section-subtitle">
+          Whether you are starting from a blank page or improving an existing system, groupproj can plug into your workflow
+          and deliver end‑to‑end value.
+        </p>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Project discovery</h3>
+            <p>
+              Clarify goals, constraints, and success metrics before any code is written. Ideal for new initiatives.
+            </p>
+            <div class="pill-row">
+              <span>Workshops</span>
+              <span>Roadmapping</span>
+              <span>Scope definition</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Implementation</h3>
+            <p>
+              Design and build web‑based tools, dashboards, and internal systems tailored to your team’s daily work.
+            </p>
+            <div class="pill-row">
+              <span>Web apps</span>
+              <span>APIs</span>
+              <span>Automation</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Ongoing support</h3>
+            <p>
+              Lightweight maintenance and iteration so your project stays useful as your company grows and changes.
+            </p>
+            <div class="pill-row">
+              <span>Monitoring</span>
+              <span>Small improvements</span>
+              <span>Ad‑hoc help</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="section" id="projects">
+        <h2 class="section-title">Sample projects</h2>
+        <p class="section-subtitle">
+          A few examples of the kind of work groupproj can deliver. Names and details are generic, but the patterns are real.
+        </p>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Operations dashboard</h3>
+            <p>
+              A single internal dashboard for a small logistics team, combining orders, status updates, and alerts in one place.
+            </p>
+            <small>RESULT</small>
+            <div class="pill-row">
+              <span>Fewer status meetings</span>
+              <span>Faster decisions</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Client portal</h3>
+            <p>
+              A simple, branded portal where clients can track progress, share files, and approve milestones.
+            </p>
+            <small>RESULT</small>
+            <div class="pill-row">
+              <span>Clear expectations</span>
+              <span>Less email</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="section" id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Have a project in mind or want to explore options? Share a bit about your context and we’ll follow up with
+          a simple, no‑pressure conversation.
+        </p>
+        <div class="contact-layout">
+          <div class="card contact-info">
+            <p>
+              You can adapt this section with your real contact details. For now, it is a simple placeholder layout
+              that works well on GitHub Pages.
+            </p>
+            <ul class="contact-list">
+              <li><span class="label">Email:</span> hello@groupproj.example</li>
+              <li><span class="label">Location:</span> Your city, Your country</li>
+              <li><span class="label">Availability:</span> Limited new projects each quarter</li>
+            </ul>
+          </div>
+          <div class="card">
+            <form class="contact-form">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Your name" />
+              </div>
+              <div class="field">
+                <label for="company">Company</label>
+                <input id="company" type="text" placeholder="Your company (optional)" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="you@example.com" />
+              </div>
+              <div class="field">
+                <label for="message">Project context</label>
+                <textarea id="message" placeholder="Briefly describe what you’d like to work on."></textarea>
+              </div>
+              <button type="button" class="btn-primary">
+                <span class="icon">✉</span>
+                Send (static demo)
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>© <span id="year"></span> groupproj. All rights reserved.</span>
+        <span>Built for GitHub Pages · Static, fast, and easy to maintain.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
